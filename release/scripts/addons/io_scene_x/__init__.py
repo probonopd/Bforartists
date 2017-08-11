@@ -1,4 +1,4 @@
-﻿# ##### BEGIN GPL LICENSE BLOCK #####
+# ##### BEGIN GPL LICENSE BLOCK #####
 #
 #  This program is free software; you can redistribute it and/or
 #  modify it under the terms of the GNU General Public License
@@ -38,7 +38,7 @@ from bpy.props import StringProperty
 
 
 class ExportDirectX(bpy.types.Operator):
-    """Export X\nExport selection to DirectX"""
+    """Export selection to DirectX"""
 
     bl_idname = "export_scene.x"
     bl_label = "Export DirectX"

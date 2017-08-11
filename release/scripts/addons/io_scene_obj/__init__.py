@@ -1,4 +1,4 @@
-﻿# ##### BEGIN GPL LICENSE BLOCK #####
+# ##### BEGIN GPL LICENSE BLOCK #####
 #
 #  This program is free software; you can redistribute it and/or
 #  modify it under the terms of the GNU General Public License
@@ -21,8 +21,8 @@
 bl_info = {
     "name": "Wavefront OBJ format",
     "author": "Campbell Barton, Bastien Montagne",
-    "version": (2, 3, 2),
-    "blender": (2, 77, 0),
+    "version": (2, 3, 6),
+    "blender": (2, 78, 0),
     "location": "File > Import-Export",
     "description": "Import-Export OBJ, Import OBJ mesh, UV's, materials and textures",
     "warning": "",
@@ -58,7 +58,7 @@ IOOBJOrientationHelper = orientation_helper_factory("IOOBJOrientationHelper", ax
 
 
 class ImportOBJ(bpy.types.Operator, ImportHelper, IOOBJOrientationHelper):
-    """Import OBJ\nLoad a Wavefront OBJ File"""
+    """Load a Wavefront OBJ File"""
     bl_idname = "import_scene.obj"
     bl_label = "Import OBJ"
     bl_options = {'PRESET', 'UNDO'}
@@ -139,6 +139,7 @@ class ImportOBJ(bpy.types.Operator, ImportHelper, IOOBJOrientationHelper):
                                         from_up=self.axis_up,
                                         ).to_4x4()
         keywords["global_matrix"] = global_matrix
+        keywords["use_cycles"] = (context.scene.render.engine == 'CYCLES')
 
         if bpy.data.is_saved and context.user_preferences.filepaths.use_relative_paths:
             import os
@@ -174,7 +175,7 @@ class ImportOBJ(bpy.types.Operator, ImportHelper, IOOBJOrientationHelper):
 
 
 class ExportOBJ(bpy.types.Operator, ExportHelper, IOOBJOrientationHelper):
-    """Export Obj\nSave a Wavefront OBJ File"""
+    """Save a Wavefront OBJ File"""
 
     bl_idname = "export_scene.obj"
     bl_label = 'Export OBJ'
@@ -190,7 +191,7 @@ class ExportOBJ(bpy.types.Operator, ExportHelper, IOOBJOrientationHelper):
     use_selection = BoolProperty(
             name="Selection Only",
             description="Export selected objects only",
-            default=True,
+            default=False,
             )
     use_animation = BoolProperty(
             name="Animation",
@@ -319,18 +320,27 @@ def menu_func_export(self, context):
     self.layout.operator(ExportOBJ.bl_idname, text="Wavefront (.obj)")
 
 
+classes = (
+    ImportOBJ,
+    ExportOBJ,
+)
+
+
 def register():
-    bpy.utils.register_module(__name__)
+    for cls in classes:
+        bpy.utils.register_class(cls)
 
     bpy.types.INFO_MT_file_import.append(menu_func_import)
     bpy.types.INFO_MT_file_export.append(menu_func_export)
 
 
 def unregister():
-    bpy.utils.unregister_module(__name__)
-
     bpy.types.INFO_MT_file_import.remove(menu_func_import)
     bpy.types.INFO_MT_file_export.remove(menu_func_export)
+
+    for cls in classes:
+        bpy.utils.unregister_class(cls)
+
 
 if __name__ == "__main__":
     register()

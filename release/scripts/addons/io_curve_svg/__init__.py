@@ -1,4 +1,4 @@
-﻿# ##### BEGIN GPL LICENSE BLOCK #####
+# ##### BEGIN GPL LICENSE BLOCK #####
 #
 #  This program is free software; you can redistribute it and/or
 #  modify it under the terms of the GNU General Public License
@@ -46,7 +46,7 @@ from bpy_extras.io_utils import ImportHelper
 
 
 class ImportSVG(bpy.types.Operator, ImportHelper):
-    """Import SVG\nLoad a SVG file"""
+    """Load a SVG file"""
     bl_idname = "import_curve.svg"
     bl_label = "Import SVG"
     bl_options = {'UNDO'}

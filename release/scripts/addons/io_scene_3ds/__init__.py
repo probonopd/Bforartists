@@ -1,4 +1,4 @@
-﻿# ##### BEGIN GPL LICENSE BLOCK #####
+# ##### BEGIN GPL LICENSE BLOCK #####
 #
 #  This program is free software; you can redistribute it and/or
 #  modify it under the terms of the GNU General Public License
@@ -58,7 +58,7 @@ IO3DSOrientationHelper = orientation_helper_factory("IO3DSOrientationHelper", ax
 
 
 class Import3DS(bpy.types.Operator, ImportHelper, IO3DSOrientationHelper):
-    """Import 3DS\nImport from 3DS file format (.3ds)"""
+    """Import from 3DS file format (.3ds)"""
     bl_idname = "import_scene.autodesk_3ds"
     bl_label = 'Import 3DS'
     bl_options = {'UNDO'}
@@ -104,7 +104,7 @@ class Import3DS(bpy.types.Operator, ImportHelper, IO3DSOrientationHelper):
 
 
 class Export3DS(bpy.types.Operator, ExportHelper, IO3DSOrientationHelper):
-    """Export 3DS\nExport to 3DS file format (.3ds)"""
+    """Export to 3DS file format (.3ds)"""
     bl_idname = "export_scene.autodesk_3ds"
     bl_label = 'Export 3DS'
 
@@ -117,7 +117,7 @@ class Export3DS(bpy.types.Operator, ExportHelper, IO3DSOrientationHelper):
     use_selection = BoolProperty(
             name="Selection Only",
             description="Export selected objects only",
-            default=True,
+            default=False,
             )
 
     def execute(self, context):

@@ -1,4 +1,4 @@
-﻿# ##### BEGIN GPL LICENSE BLOCK #####
+# ##### BEGIN GPL LICENSE BLOCK #####
 #
 #  This program is free software; you can redistribute it and/or
 #  modify it under the terms of the GNU General Public License
@@ -57,7 +57,7 @@ ExportVRMLOrientationHelper = orientation_helper_factory("ExportVRMLOrientationH
 
 
 class ExportVRML(bpy.types.Operator, ExportHelper, ExportVRMLOrientationHelper):
-    """Export VRML2\nExport mesh objects as a VRML2, colors and texture coordinates"""
+    """Export mesh objects as a VRML2, colors and texture coordinates"""
     bl_idname = "export_scene.vrml2"
     bl_label = "Export VRML2"
 

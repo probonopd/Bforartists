@@ -1,4 +1,4 @@
-﻿# ##### BEGIN GPL LICENSE BLOCK #####
+# ##### BEGIN GPL LICENSE BLOCK #####
 #
 #  This program is free software; you can redistribute it and/or
 #  modify it under the terms of the GNU General Public License
@@ -58,7 +58,7 @@ IOX3DOrientationHelper = orientation_helper_factory("IOX3DOrientationHelper", ax
 
 
 class ImportX3D(bpy.types.Operator, ImportHelper, IOX3DOrientationHelper):
-    """Import X3D / VRML2\nImport an X3D or VRML2 file"""
+    """Import an X3D or VRML2 file"""
     bl_idname = "import_scene.x3d"
     bl_label = "Import X3D/VRML2"
     bl_options = {'PRESET', 'UNDO'}
@@ -82,7 +82,7 @@ class ImportX3D(bpy.types.Operator, ImportHelper, IOX3DOrientationHelper):
 
 
 class ExportX3D(bpy.types.Operator, ExportHelper, IOX3DOrientationHelper):
-    """Export X3D\nExport selection to Extensible 3D file (.x3d)"""
+    """Export selection to Extensible 3D file (.x3d)"""
     bl_idname = "export_scene.x3d"
     bl_label = 'Export X3D'
     bl_options = {'PRESET'}
@@ -93,7 +93,7 @@ class ExportX3D(bpy.types.Operator, ExportHelper, IOX3DOrientationHelper):
     use_selection = BoolProperty(
             name="Selection Only",
             description="Export selected objects only",
-            default=True,
+            default=False,
             )
     use_mesh_modifiers = BoolProperty(
             name="Apply Modifiers",
