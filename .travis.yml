@@ -31,6 +31,7 @@ matrix:
           - g++-4.9
           - cmake
           - doxygen
+          - libjemalloc-dev
     env:
       - MATRIX_EVAL="gcc-6 && CXX=g++-6 && NPROC=$(nproc)"
   - os: osx
@@ -40,7 +41,7 @@ matrix:
 
 # Before compile
 install:
-  - ./build_files/build_environment/install_deps.sh --skip-osl --no-confirm
+  - ./build_files/build_environment/install_deps.sh
 
 script:
   - mkdir build
