@@ -40,7 +40,7 @@ matrix:
 
 # Before compile
 install:
-  - ./build_files/build_environment/install_deps.sh --skip-osl --no-confirm
+  - ./build_files/build_environment/install_deps.sh --skip-osl ----ver-openvdb=3.3.0 --no-confirm
 
 script:
   - mkdir build
