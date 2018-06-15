@@ -48,6 +48,9 @@ build:
   verbosity: minimal
   parallel: true
 
+after_build:
+  ps: $root = Resolve-Path C:\projects\bfa\build\bin; [IO.Directory]::GetFiles($root.Path, '*.*', 'AllDirectories') | % { Push-AppveyorArtifact $_ -FileName $_.Substring($root.Path.Length + 1) -DeploymentName to-publish }
+
 deploy:
   release: bforartists-git
   description: 'The current git version of Bforartists'
@@ -56,6 +59,8 @@ deploy:
     secure: lsXb3GHJtJFQ6r6uum7jHYUBK6RWHGA+EjJX+9Jij505T7mO9JCieuOUXPYINdg/
   draft: false
   prerelease: false
+  artifact: 
   on:
     branch: linux_build
     appveyor_repo_tag: false
+#  folder:
