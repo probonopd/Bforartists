@@ -54,7 +54,7 @@ build:
   parallel: true
 
 after_build:
--cmd: |-
+- cmd: |-
   7z a bfa_windows.zip c:\projects\bfa\build\bin\*
 
 deploy:
