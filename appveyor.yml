@@ -2,6 +2,7 @@ version: '{build}'
 branches:
   only:
   - master
+clone_folder: c:\projects\bfa
 image:
 - Visual Studio 2013
 - Visual Studio 2015
@@ -14,13 +15,11 @@ environment:
   matrix:
   - arch: Win64
 for:
-  -
-    matrix:
-      only:
-        -image: Ubuntu
-    clone_folder: /projects/bfa
-matrix:
-  fast_finish: true
+-
+  matrix:
+    only:
+      - image: Ubuntu
+  clone_folder: /projects/bfa
 
 install:
 #- ps: C:/projects/bfa/build_files/build_environment/windows/install_cuda.cmd
