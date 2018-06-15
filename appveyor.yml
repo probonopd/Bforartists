@@ -59,7 +59,7 @@ deploy:
     secure: lsXb3GHJtJFQ6r6uum7jHYUBK6RWHGA+EjJX+9Jij505T7mO9JCieuOUXPYINdg/
   draft: false
   prerelease: false
-  artifact: 
+#  artifact: 
   on:
     branch: linux_build
     appveyor_repo_tag: false
