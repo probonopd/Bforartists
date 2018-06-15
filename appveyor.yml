@@ -2,7 +2,6 @@ version: '{build}'
 branches:
   only:
   - master
-clone_folder: c:\projects\bfa
 image:
 - Visual Studio 2013
 - Visual Studio 2015
@@ -14,6 +13,12 @@ platform:
 environment:
   matrix:
   - arch: Win64
+for:
+  -
+    matrix:
+      only:
+        -image: Ubuntu
+    clone_folder: /projects/bfa
 matrix:
   fast_finish: true
 
@@ -49,7 +54,8 @@ build:
   parallel: true
 
 after_build:
-  ps: $root = Resolve-Path C:\projects\bfa\build\bin; [IO.Directory]::GetFiles($root.Path, '*.*', 'AllDirectories') | % { Push-AppveyorArtifact $_ -FileName $_.Substring($root.Path.Length + 1) -DeploymentName to-publish }
+-cmd: |-
+  7z a bfa_windows.zip c:\projects\bfa\build\bin\*
 
 deploy:
   release: bforartists-git
@@ -59,7 +65,7 @@ deploy:
     secure: lsXb3GHJtJFQ6r6uum7jHYUBK6RWHGA+EjJX+9Jij505T7mO9JCieuOUXPYINdg/
   draft: false
   prerelease: false
-#  artifact: 
+  artifact: bfa_windows.zip
   on:
     branch: linux_build
     appveyor_repo_tag: false
