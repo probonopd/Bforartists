@@ -14,12 +14,6 @@ platform:
 environment:
   matrix:
   - arch: Win64
-for:
--
-  matrix:
-    only:
-      - image: Ubuntu
-  clone_folder: /projects/bfa
 
 install:
 #- ps: C:/projects/bfa/build_files/build_environment/windows/install_cuda.cmd
