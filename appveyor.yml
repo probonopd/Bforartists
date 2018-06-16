@@ -48,7 +48,7 @@ before_build:
 #  parallel: true
 build_script:
 - dir c:\projects\bfa\build\
-- msbuild Bforartists.sln /t:INSTALL
+- msbuild Bforartists.sln /t:install
 
 after_build:
 - ps:  7z a bfa_windows.zip c:\projects\bfa\build\bin\*
