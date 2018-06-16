@@ -48,9 +48,9 @@ before_build:
 #  parallel: true
 build_script:
 - dir c:\projects\bfa\build\
-- msbuild /pp | find "<Target "
-- cmake --build . --config Release --target INSTALL -- /m
-#- msbuild Bforartists.sln
+#- msbuild /pp | find "<Target "
+#- cmake --build . --config Release --target INSTALL -- /m
+- msbuild INSTALL.vcxproj /p:configuration=release /m
 
 after_build:
 - ps:  7z a bfa_windows.zip c:\projects\bfa\build\bin\*
