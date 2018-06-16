@@ -55,6 +55,9 @@ build_script:
 after_build:
 - ps:  7z a bfa_windows.zip c:\projects\bfa\build\bin\*
 
+artifacts:
+  - path: bfa_windows.zip
+    name: BFAWindows
 deploy:
   release: bforartists-git
   description: 'The current git version of Bforartists'
@@ -63,7 +66,6 @@ deploy:
     secure: lsXb3GHJtJFQ6r6uum7jHYUBK6RWHGA+EjJX+9Jij505T7mO9JCieuOUXPYINdg/
   draft: false
   prerelease: false
-  artifact: bfa_windows.zip
   on:
     branch: linux_build
     appveyor_repo_tag: false
