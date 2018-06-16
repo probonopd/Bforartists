@@ -53,10 +53,10 @@ build_script:
 - msbuild INSTALL.vcxproj /p:configuration=release /m
 
 after_build:
-- ps:  7z a bfa_windows.zip c:\projects\bfa\build\bin\*
+- ps:  dir && 7z a bfa_windows.zip c:\projects\bfa\build\bin\*
 
 artifacts:
-  - path: bfa_windows.zip
+  - path: c:\projects\bfa\build\bfa_windows.zip
     name: BFAWindows
 deploy:
   release: bforartists-git
