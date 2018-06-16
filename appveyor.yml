@@ -66,28 +66,3 @@ deploy:
     branch: linux_build
     appveyor_repo_tag: false
 #  folder:
-
-for:
--
-  matrix:
-    only:
-      - image: Ubuntu
-  clone_folder: /projects/bfa
-  build_script:
-  - echo Ubuntu build script
-  - cd /projects/bfa/build/
-  - make install
-  after_build:
-  - 7z a bfa_linux.zip /projects/bfa/build/bin/
-  deploy:
-    release: bforartists-git
-    description: 'The current git version of Bforartists'
-    provider: GitHub
-    auth_token:
-      secure: lsXb3GHJtJFQ6r6uum7jHYUBK6RWHGA+EjJX+9Jij505T7mO9JCieuOUXPYINdg/
-    draft: false
-    prerelease: false
-    artifact: bfa_linux.zip
-    on:
-      branch: linux_build
-      appveyor_repo_tag: false
