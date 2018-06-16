@@ -48,6 +48,8 @@ before_build:
 #  parallel: true
 build_script:
 - dir c:\projects\bfa\build\
+- dir c:\projects\bfa
+- dir c:\projects\bfa\build\bin
 #- msbuild /pp | find "<Target "
 #- cmake --build . --config Release --target INSTALL -- /m
 - msbuild INSTALL.vcxproj /p:configuration=release /m
