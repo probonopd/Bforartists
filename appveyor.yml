@@ -48,7 +48,9 @@ before_build:
 #  parallel: true
 build_script:
 - dir c:\projects\bfa\build\
-- msbuild Bforartists.sln /t:install
+- msbuild /pp | find "<Target "
+- cmake --build . --config Release --target INSTALL -- /m
+#- msbuild Bforartists.sln
 
 after_build:
 - ps:  7z a bfa_windows.zip c:\projects\bfa\build\bin\*
@@ -66,3 +68,28 @@ deploy:
     branch: linux_build
     appveyor_repo_tag: false
 #  folder:
+
+for:
+-
+  matrix:
+    only:
+      - image: Ubuntu
+  clone_folder: /projects/bfa
+  build_script:
+  - echo Ubuntu build script
+  - cd /projects/bfa/build/
+  - make install
+  after_build:
+  - 7z a bfa_linux.zip /projects/bfa/build/bin/
+  deploy:
+    release: bforartists-git
+    description: 'The current git version of Bforartists'
+    provider: GitHub
+    auth_token:
+      secure: lsXb3GHJtJFQ6r6uum7jHYUBK6RWHGA+EjJX+9Jij505T7mO9JCieuOUXPYINdg/
+    draft: false
+    prerelease: false
+    artifact: bfa_linux.zip
+    on:
+      branch: linux_build
+      appveyor_repo_tag: false
