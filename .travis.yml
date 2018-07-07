@@ -17,26 +17,20 @@ matrix:
   include:
   - os: linux
     dist: trusty
-    compiler: gcc-6
+    compiler: gcc
     addons:
       apt:
-        sources:
-          - ubuntu-toolchain-r-test
         packages:
           - nvidia-cuda-dev
           - libcuda1-384
           - build-essential
-          - gcc-6-multilib
-          - gcc-6
-          - g++-6
+          - g++
           - cmake
           - doxygen
-    env:
-      - MATRIX_EVAL="gcc-6 && CXX=g++-6 && NPROC=$(nproc)"
 
 # Before compile
 install:
-  - ./build_files/build_environment/install_deps.sh --skip-osl --no-confirm
+  - ./build_files/build_environment/install_deps.sh --skip-osl --no-confirm --skip-llvm --skip-opencollada
 
 script:
   - mkdir build
