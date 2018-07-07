@@ -30,7 +30,10 @@ matrix:
 
 # Before compile
 install:
-  - ./build_files/build_environment/install_deps.sh --skip-osl --no-confirm --skip-llvm --skip-opencollada
+  - sudo add-apt-repository -y ppa:jonathonf/python-3.6
+  - sudo apt-get update
+  - sudo apt-get -y install python3.6
+  - ./build_files/build_environment/install_deps.sh --skip-python --skip-osl --no-confirm --skip-llvm --skip-opencollada
 
 script:
   - mkdir build
