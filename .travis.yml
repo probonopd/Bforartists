@@ -33,10 +33,10 @@ matrix:
           - doxygen
     env:
       - MATRIX_EVAL="gcc-6 && CXX=g++-6 && NPROC=$(nproc)"
-  - os: osx
-    osx_image: xcode8
-    env:
-      - MATRIX_EVAL="NPROC=$(sysctl -n hw.physicalcpu)"
+#  - os: osx
+#    osx_image: xcode8
+#    env:
+#      - MATRIX_EVAL="NPROC=$(sysctl -n hw.physicalcpu)"
 
 # Before compile
 install:
